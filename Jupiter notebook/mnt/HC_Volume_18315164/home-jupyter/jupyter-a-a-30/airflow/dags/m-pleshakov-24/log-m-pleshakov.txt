@@ -1,0 +1,57 @@
+Report 17-09-22 21:29
+Top 10 domains by regions: 
+  domain  counts
+0    com  361325
+1    org   30508
+2    net   25906
+3     ru   20065
+4     au   11726
+5     de   10507
+6     uk    9954
+7     nl    9455
+8     it    8846
+9     in    8546
+
+Largest domain: 
+file-service-default-114c67af0763a8a98e770ff3ee495371.fra1.digitaloceanspaces.com
+
+airflow.com not in top 17-09-22 21:29
+
+Report 21:22
+Top 10 domains by regions: 
+  domain  counts
+0    com  361325
+1    org   30508
+2    net   25906
+3     ru   20065
+4     au   11726
+5     de   10507
+6     uk    9954
+7     nl    9455
+8     it    8846
+9     in    8546
+
+Largest domain: 
+file-service-default-114c67af0763a8a98e770ff3ee495371.fra1.digitaloceanspaces.com
+
+airflow.com not in top 
+
+Report 00:00
+Top 10 domains by regions: 
+  domain  counts
+0    com  361325
+1    org   30508
+2    net   25906
+3     ru   20065
+4     au   11726
+5     de   10507
+6     uk    9954
+7     nl    9455
+8     it    8846
+9     in    8546
+
+Largest domain: 
+file-service-default-114c67af0763a8a98e770ff3ee495371.fra1.digitaloceanspaces.com
+
+airflow.com not in top 
+

@@ -1,0 +1,128 @@
+import requests
+from zipfile import ZipFile
+from io import BytesIO
+import pandas as pd
+import numpy as np
+from datetime import timedelta
+from datetime import datetime
+from io import StringIO
+import telegram
+
+from airflow.decorators import dag, task
+from airflow.operators.python import get_current_context
+from airflow.models import Variable
+
+VGSALES = '/var/lib/airflow/airflow.git/dags/a.batalov/vgsales.csv'
+VGSALES_FILE = 'vgsales.csv'
+YEAR = 2011 + hash(f'k.volkov-23') % 23
+
+default_args = {
+    'owner': 'k.volkov',
+    'depends_on_past': False,
+    'retries': 2,
+    'retry_delay': timedelta(minutes=5),
+    'start_date': datetime(2022, 9, 1),
+    'schedule_interval': '0 11 * * *'
+}
+
+#CHAT_ID = -620798068
+try:
+    BOT_TOKEN = Variable.get('telegram_secret')
+except:
+    BOT_TOKEN = ''
+
+def send_message(context):
+    date = context['ds']
+    dag_id = context['dag'].dag_id
+    message = f'Huge success! Dag {dag_id} completed on {date}'
+    if BOT_TOKEN != '':
+        bot = telegram.Bot(token=BOT_TOKEN)
+        bot.send_message(chat_id=CHAT_ID, text=message)
+    else:
+        pass
+
+@dag(default_args=default_args, catchup=False)
+def games_volkov_23():
+    @task(retries=3)
+    def get_games_data():
+        games_data = pd.read_csv(VGSALES).query("Year == @YEAR")
+        return vgsales_data
+    
+    #      Какая игра была самой продаваемой в этом году во всем мире?
+    @task(retries=4, retry_delay=timedelta(10))
+    def get_best_selling_game(vgsales_data):
+        best_selling_game = vgsales_data.sort_values('Global_Sales', ascending=False).head(1).Name.to_string()
+        return best_selling_game
+    
+    #      Игры какого жанра были самыми продаваемыми в Европе? Перечислить все, если их несколько
+    @task(retries=4)
+    def get_best_genre_EU(vgsales_data):
+        best_genre_EU = list(vgsales_data \
+                             .sort_values('EU_Sales', ascending=False) \
+                             .head(5).Genre \
+                             .unique())
+        return best_genre_EU
+    #      На какой платформе было больше всего игр, которые продались более чем миллионным тиражом в Северной Америке?
+    #      Перечислить все, если их несколько.
+    @task(retries=2)
+    def get_best_platform_NA(vgsales_data):
+        best_platform_NA = list(df.query('NA_Sales >= 1.0') \
+                        .groupby(['Platform'], as_index=False) \
+                        .agg({'Rank': 'count'}) \
+                        .sort_values('Rank', ascending=False)\
+                        .Platform.head(3))
+        return best_platform_NA
+    #      У какого издателя самые высокие средние продажи в Японии? Перечислить все, если их несколько
+
+    @task(retries=2)
+    def get_mean_platform_sales_JP(vgsales_data):
+        mean_platform_sales_JP = list(vgsales_data.groupby(['Publisher'], as_index=False).agg({'JP_Sales': 'mean'}) \
+                                    .sort_values('JP_Sales', ascending=False) \
+                                    .Publisher.head(5))
+        return mean_platform_sales_JP
+       
+    
+    #     Сколько игр продались лучше в Европе, чем в Японии?
+    @task(retries=2)
+    def get_more_JPsales_than_EUsales(vgsales_data):
+        more_JPsales_than_EUsales = ((df['JP_Sales'] - df['EU_Sales'])>0).sum()
+        
+        return more_JPsales_than_EUsales
+    
+
+    @task(on_success_callback=send_message)
+    def print_data(best_selling_game,
+                  best_genre_EU,
+                  best_platform_NA,
+                  mean_platform_sales_JP,
+                  more_JPsales_than_EUsales):
+
+        context = get_current_context()
+        date = context['ds']
+
+        print(f'Год {YEAR}:')
+              
+        print(f'Самая продаваемая игра в мире: {best_selling_game}')
+
+        print(f"Самый продаваемый жанр игр в Европе: {', '.join(best_genre_EU)}")
+        
+        print(f"Игры, которые продались более чем миллионным тиражом в Северной Америке, на платформе/платформах {','.join(best_platform_NA)}")
+              
+        print(f"Самые высокие средние продажи издателя в Японии {', '.join(mean_platform_sales_JP)}")
+              
+        print(f'Количество игр, которые проданы в Европе лучше, чем в Японии: {more_JPsales_than_EUsales}')
+    
+    
+    
+    
+    games_data = get_games_data()
+    
+    best_selling_game = get_best_selling_game(vgsales_data)
+    best_genre_EU = get_best_genre_EU(vgsales_data)
+    best_platform_NA = get_best_platform_NA(vgsales_data)
+    mean_platform_sales_JP = get_mean_platform_sales_JP(vgsales_data)
+    more_JPsales_than_EUsales = get_more_JPsales_than_EUsales(vgsales_data)
+
+    print_data(best_selling_game, best_genre_EU, best_platform_NA, mean_platform_sales_JP, more_JPsales_than_EUsales)
+
+top_games_kvolkov = top_games_kvolkov()

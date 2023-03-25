@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "prefab-backbone-326120",
+  "private_key_id": "2bc296f5325780d62bf00f7081d9f53a71bc5acb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDfvI7BmbIjcf2r\nBMRR1NsKT2GKa0oxnybO3VZeKqJ5fEzIRJVmZvGFliWZCjgvWN2ivHdo6vElYlHd\nMofhJ/TZcQmd7jD1mCeVOhiiW5jztbZQO6OpgHm0yyGVVivNcyrPiCIr47M1hER/\nDTuehtZ468GPKkPhZygDI4gnCAypsYTVMhBXiL3y3eh/hSneDQNWIXBDQhfHLmN6\nb5ISukgRd8/QpYBYBEQb4dRDdgLnQJs0udgSRCcd6tTXvzSgjaW63BnVEvzJbIGh\nKx1kXuc0JJhj4mHFP96zG1TnAZOErw+U+YrUab1zv9Ah7dyGPfM+d61poRWP/I1B\nfCJ/bs5vAgMBAAECggEAHnvbx4JgGcw85Rbv2LvJDGKRxlZP9EAxqBsoMAmxvB5f\nfSSQZooS0Oy1kAsrFJMQak0wx9lwTx5SS8fIE7lp9vvGdP+F1DCNqXC899dwbjmN\nRD6b/KBF9N19uecqbgJfDDUJfYliBXdRYy4zt/8PLHKSxiWFZ39dSEWIa35Wm1gU\nhtoLZvtClqmdUMR5+IwEuFCglgdYkM597nAV4dnM7bnYWhL38L/JFJWhUUiV+QXU\n8AdFJpyD9XtxzE4/WUnM3gKuPpWYFz/akCHmY6nG6K9MWtH4gzSbH8guHcFT8xjQ\ntf5Q2BiVy/N4C2onKCQGT5+Q2yf9tliG6q9Pa4jiQQKBgQD/nXz/jFlR+72DNwjM\nX1RIsnhGsXvMSB8meuioV9G5gVhdndoCHoqNU0zmHrYtmcDm+mKcAp6Y0gycJ6ej\ntZ+2B6ubqU2qGYkwtRLAcFL5yCxpJ8dUfyHkcQB6G/j/Gqm+T9h6C8X5NsrS7aFV\ntSgGpyEg8V/aQT9qKS8DEOyidwKBgQDgEsicZ3Qbcb/9eCP8BwRXlgOAw26lBHUS\nCyqWfqKPzL8Oi50RLHK+HMEacMPA65uDvfxCz7khXwlSpojDbXoMrkVu9X6Q+KwH\nCBoCz0SyI5UcZ7FzzPwecnsXepVk2UZiPQPRVfVwi74sSudr4Mgj6hT6LU6zWM31\nZi4s/y95yQKBgD+5MTo78OCBU6NsiuL4OPjOlTF6eZRZvnpHVczx57TJTBA6k+jH\nWF8XDyqnKV+A3xg1/3NJK+SJKN+c+yvS0Xf9vYhW0qe/KfZcjcovtl/SyU+FvSmR\ncA+VJDtM0ew2524sVZlHahlQ0Yt39ip5uPq/m4Cs6+prLbX3gmLPS07NAoGAaTpI\n/bJTw2Oq7uTRuVSuRFeNs5WTy2kJdXzK9jvoKbHUc4c7Lsp55C/qu3kDZQEAWmEJ\nK3MTlMllvmu4xFYQQA5DSzV8x6YQW4kBdhpSP3oYV2uW2TQFnmLSzZbiu6aRuCbB\nOTit97mYiIJwpae9NaiDS22ljPICXuEqhDUe3YkCgYBKFEHEV7jHrAajOC7AeP/H\nSZfhGaL4zZvwo+p/6sW/taDY058VThB8Yp7w3dfn+d6+BAv3p+i1Ms+Xh0g63xl0\nuzwPGxPWxkFgM0y2S0pIAMfvRfJX/NqgqFNmY4zmYFd+DP8/zJZo1cQabnd36u10\n61T44lPk/n5lUfo9QYfzvQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "test-name@prefab-backbone-326120.iam.gserviceaccount.com",
+  "client_id": "116925287384620756710",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test-name%40prefab-backbone-326120.iam.gserviceaccount.com"
+}
